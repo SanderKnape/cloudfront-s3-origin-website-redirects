@@ -1,0 +1,20 @@
+{
+  "name": "cloudfront-s3-origin-website-redirects",
+  "version": "0.1.0",
+  "description": "TODO write a description",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
+    "test": "jest --coverage"
+  },
+  "author": {
+    "name": "Sander Knape",
+    "email": "s.knape88@gmail.com",
+    "url": "https://sanderknape.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "jest": "^23.5.0"
+  }
+}

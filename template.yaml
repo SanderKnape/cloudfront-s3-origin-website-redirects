@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  BucketName:
+    Type: String
+    Description: "The S3 bucket origin you are using with your CloudFront distribution"
+
+Resources:
+  CloudFrontRedirectFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      Description: "CloudFront website redirects for an S3 origin. Available through the Serverless Application Repository."
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref BucketName
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref BucketName
+
+Outputs:
+  CloudFrontRedirectFunctionName:
+    Value: !Ref CloudFrontRedirectFunction
+    Export:
+      Name: cloudfront-redirect-function-name
+  CloudFrontRedirectFunctionArn:
+    Value: !GetAtt CloudFrontRedirectFunction.Arn
+    Export:
+      Name: cloudfront-redirect-function-arn
